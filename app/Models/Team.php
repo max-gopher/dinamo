@@ -16,4 +16,9 @@ class Team extends Model
     {
         return $this->hasMany(Player::class);
     }
+
+    public function staffs (): HasMany
+    {
+        return $this->hasMany(Staff::class);
+    }
 }

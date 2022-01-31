@@ -3,27 +3,26 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Panel;
 
-class Team extends Resource
+class Staff extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Team::class;
+    public static $model = \App\Models\Staff::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'first_name';
 
     /**
      * The columns that should be searched.
@@ -44,9 +43,11 @@ class Team extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Команда'), 'name')->rules(['required']),
-            new Panel(__('Игроки'), $this->playersPanel()),
-            new Panel(__('Сотрудники'), $this->staffsPanel()),
+            Text::make(__('Фамилия'), 'middle_name'),
+            Text::make(__('Имя'), 'first_name')->rules(['required']),
+            Text::make(__('Отчество'), 'last_name'),
+            Text::make(__('Должность'), 'position'),
+            BelongsTo::make(__('Команда'), 'team', Team::class)
         ];
     }
 
@@ -92,19 +93,5 @@ class Team extends Resource
     public function actions(Request $request)
     {
         return [];
-    }
-
-    protected function playersPanel(): array
-    {
-        return [
-            HasMany::make(__('Игроки'), 'players', Player::class)
-        ];
-    }
-
-    protected function staffsPanel(): array
-    {
-        return [
-            HasMany::make(__('Сотрудники'), 'staffs', Staff::class)
-        ];
     }
 }
