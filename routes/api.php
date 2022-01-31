@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('client')->group(function () {
+    Route::get('/team', [\App\Http\Controllers\Api\TeamController::class, 'list']);
+});
