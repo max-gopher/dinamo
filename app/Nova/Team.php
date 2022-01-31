@@ -3,9 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 
 class Team extends Resource
 {
@@ -42,7 +44,8 @@ class Team extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Команда'), 'name')->rules(['required'])
+            Text::make(__('Команда'), 'name')->rules(['required']),
+            new Panel(__('Игроки'), $this->playersPanel())
         ];
     }
 
@@ -88,5 +91,12 @@ class Team extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    protected function playersPanel(): array
+    {
+        return [
+            HasMany::make(__('Игроки'), 'players', Player::class)
+        ];
     }
 }
