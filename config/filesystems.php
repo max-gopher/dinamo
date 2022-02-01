@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'clubs' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/clubs'),
+            'url' => env('APP_URL').'/storage/clubs',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
