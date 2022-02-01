@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -91,5 +92,12 @@ class Club extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    protected function leaguesPanel(): array
+    {
+        return [
+            BelongsToMany::make(__('Лиги'), 'leagues', League::class)
+        ];
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 
 class League extends Resource
 {
@@ -89,7 +91,8 @@ class League extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Название'), 'name')->rules(['required'])
+            Text::make(__('Название'), 'name')->rules(['required']),
+            new Panel(__('Команды'), $this->clubsPanel())
         ];
     }
 
@@ -135,5 +138,12 @@ class League extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    protected function clubsPanel(): array
+    {
+        return [
+            BelongsToMany::make(__('Команды'), 'clubs', Club::class)
+        ];
     }
 }
