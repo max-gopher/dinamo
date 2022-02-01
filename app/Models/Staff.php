@@ -12,8 +12,4 @@ class Staff extends Model
 
     protected $fillable = ['first_name', 'last_name', 'middle_name', 'position', 'team_id'];
 
-    public function team (): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
 }

@@ -47,8 +47,7 @@ class Player extends Resource
             Text::make(__('Фамилия'), 'middle_name'),
             Text::make(__('Имя'), 'first_name')->rules(['required']),
             Text::make(__('Отчество'), 'last_name'),
-            Number::make(__('Номер'), 'number'),
-            BelongsTo::make(__('Команда'), 'team', Team::class)
+            Number::make(__('Номер'), 'number')
         ];
     }
 

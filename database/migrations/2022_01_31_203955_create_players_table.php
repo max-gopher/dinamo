@@ -19,7 +19,6 @@ class CreatePlayersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->integer('number')->nullable();
-            $table->bigInteger('team_id')->nullable();
             $table->timestamps();
         });
     }

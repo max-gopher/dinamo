@@ -19,7 +19,6 @@ class CreateStaffTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('position')->nullable();
-            $table->bigInteger('team_id')->nullable();
             $table->timestamps();
         });
     }

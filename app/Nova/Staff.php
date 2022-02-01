@@ -46,8 +46,7 @@ class Staff extends Resource
             Text::make(__('Фамилия'), 'middle_name'),
             Text::make(__('Имя'), 'first_name')->rules(['required']),
             Text::make(__('Отчество'), 'last_name'),
-            Text::make(__('Должность'), 'position'),
-            BelongsTo::make(__('Команда'), 'team', Team::class)
+            Text::make(__('Должность'), 'position')
         ];
     }
 
