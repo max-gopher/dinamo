@@ -50,9 +50,9 @@ class Staff extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Фамилия'), 'middle_name'),
+            Text::make(__('Фамилия'), 'last_name'),
             Text::make(__('Имя'), 'first_name')->rules(['required']),
-            Text::make(__('Отчество'), 'last_name'),
+            Text::make(__('Отчество'), 'middle_name'),
             Text::make(__('Должность'), 'position')
         ];
     }
