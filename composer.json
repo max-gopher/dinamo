@@ -2,12 +2,19 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "repositories": [
         {
             "type": "path",
             "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Rte"
         }
     ],
     "require": {
@@ -16,10 +23,13 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/fortify": "^1.10",
         "laravel/framework": "^8.75",
+        "laravel/nova": "*",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.5",
+        "palauaandsons/nova-tags-field": "^3.0",
         "predis/predis": "^1.1",
-        "laravel/nova": "*"
+        "cartalyst/tags": "^11.0",
+        "dinamo/rte": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
