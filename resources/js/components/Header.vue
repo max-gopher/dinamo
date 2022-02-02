@@ -3,7 +3,7 @@
     <div class="header__container">
       <div class="header__logo">
         <router-link to="/">
-          <img src="@/assets/img/icon-2.svg" alt="logo" class="logo">
+          <img :src="require(`@/assets/img/icon-2.svg`).default" alt="logo" class="logo">
         </router-link>
       </div>
       <div id="nav">
@@ -17,13 +17,13 @@
       <div class="social">
         <div class="social__container">
           <a href="https://www.instagram.com/dynamovologda/" target="_blank" class="social__item">
-            <img src="@/assets/img/instagram.svg" alt="instagram">
+            <img :src="require(`@/assets/img/instagram.svg`).default" alt="instagram">
           </a>
           <a href="https://t.me/dynamovologda" target="_blank" class="social__item">
-            <img src="@/assets/img/telegram.svg" alt="telegram">
+            <img :src="require(`@/assets/img/telegram.svg`).default" alt="telegram">
           </a>
           <a href="https://www.youtube.com/channel/UCKTA89P6oAb1pqTKEgRqE9w/" target="_blank" class="social__item">
-            <img src="@/assets/img/youtube.svg" alt="youtube">
+            <img :src="require(`@/assets/img/youtube.svg`).default" alt="youtube">
           </a>
         </div>
       </div>
