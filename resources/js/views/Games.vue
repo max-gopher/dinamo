@@ -40,7 +40,7 @@
                     Динамо
                   </div>
                   <div class="card__team-icon">
-                    <img src="@/assets/img/icon-1.svg" alt="">
+                    <img :src="require(`@/assets/img/icon-1.svg`).default" alt="">
                   </div>
                 </div>
                 <div class="card__value">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="card__team">
                   <div class="card__team-icon">
-                    <img src="@/assets/img/icon-2.svg" alt="">
+                    <img :src="require(`@/assets/img/icon-2.svg`).default" alt="">
                   </div>
                   <div class="card__team-name">
                     Балашиха
