@@ -94,8 +94,8 @@ class Article extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Image::make(__('Изображение'), 'image')->disk('articles'),
-            Text::make(__('Название'), 'name'),
-            Date::make(__('Дата'), 'date'),
+            Text::make(__('Название'), 'name')->rules(['required']),
+            Date::make(__('Дата'), 'date')->rules(['required']),
             BelongsTo::make(__('Рубрика'), 'category', Category::class),
             Rte::make(__('Содержимое'), 'content')
         ];

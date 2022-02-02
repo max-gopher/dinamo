@@ -12,6 +12,8 @@ class Article extends Model
 
     protected $fillable = ['name', 'image', 'content', 'date', 'category_id'];
 
+    protected $casts = ['date' => 'datetime'];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
