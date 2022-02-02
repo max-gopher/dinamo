@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b770c8921aa6e7c119b277e63cfe44dd",
+    "content-hash": "2790253d8bb0c73b635093e8ec3ea786",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2537,6 +2537,51 @@
                 }
             ],
             "time": "2021-11-21T11:48:40+00:00"
+        },
+        {
+            "name": "michielfb/laravel-nova-time-field",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michielfb/laravel-nova-time-field.git",
+                "reference": "8b19943792927b7f5dda65ed527dd9b270013347"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michielfb/laravel-nova-time-field/zipball/8b19943792927b7f5dda65ed527dd9b270013347",
+                "reference": "8b19943792927b7f5dda65ed527dd9b270013347",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Michielfb\\Time\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Michielfb\\Time\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A HTML5 time field for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/michielfb/laravel-nova-time-field/issues",
+                "source": "https://github.com/michielfb/laravel-nova-time-field/tree/1.2.2"
+            },
+            "time": "2021-09-20T19:07:29+00:00"
         },
         {
             "name": "monolog/monolog",
