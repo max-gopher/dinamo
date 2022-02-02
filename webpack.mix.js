@@ -12,17 +12,21 @@ const path = require('path');
  */
 
 mix.webpackConfig({
-    // rules: {
-    //     test: /\.(png|jpe?g|gif)$/i,
-    //     use: [
-    //         {
-    //             loader: 'file-loader',
-    //             options: {
-    //                 esModule: false,
-    //             },
-    //         },
-    //     ],
-    // },
+    module: {
+        rules: [
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                ],
+            }
+        ]
+    },
     resolve: {
         modules: [
             'node_modules'
