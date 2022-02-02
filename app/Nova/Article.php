@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Dinamo\Rte\Rte;
+use PalauaAndSons\TagsField\Tags;
 
 class Article extends Resource
 {
@@ -97,6 +98,7 @@ class Article extends Resource
             Text::make(__('Название'), 'name')->rules(['required']),
             Date::make(__('Дата'), 'date')->rules(['required']),
             BelongsTo::make(__('Рубрика'), 'category', Category::class),
+            Tags::make(__('Теги')),
             Rte::make(__('Содержимое'), 'content')
         ];
     }
