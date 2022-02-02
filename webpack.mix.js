@@ -12,6 +12,17 @@ const path = require('path');
  */
 
 mix.webpackConfig({
+    // rules: {
+    //     test: /\.(png|jpe?g|gif)$/i,
+    //     use: [
+    //         {
+    //             loader: 'file-loader',
+    //             options: {
+    //                 esModule: false,
+    //             },
+    //         },
+    //     ],
+    // },
     resolve: {
         modules: [
             'node_modules'
@@ -24,4 +35,5 @@ mix.webpackConfig({
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [])
+    .copy('resources/assets/img', 'public/images', [])
     .vue();
