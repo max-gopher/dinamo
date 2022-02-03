@@ -7,6 +7,35 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## API URL's
+
+### Команда:
+- http://localhost/api/client/team
+
+### Статьи:
+Доступные параметры: **perPage**, **categoryId**, **tags**
+
+Дефолтные значения: **perPage = 15**
+
+#### Список:
+- http://localhost/api/client/articles/
+- http://localhost/api/client/articles/?categoryId[]=1&categoryId[]=2
+- http://localhost/api/client/articles/?categoryId[]=2
+- http://localhost/api/client/articles/?categoryId=2
+- http://localhost/api/client/articles/?tags=ddddd
+- http://localhost/api/client/articles/?tags[]=ddddd
+- http://localhost/api/client/articles/?perPage=1
+
+#### Детальная:
+-http://localhost/api/client/article/1
+
+### Дополнительные:
+
+ВНИМАНИЕ! Отсутствует ограничения по количеству!
+
+- http://localhost/api/client/articles/tags
+- http://localhost/api/client/articles/categories
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
