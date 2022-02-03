@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public static int $perPage = 15;
+
     public function success (array $data = [], string $message = '', int $code = 200): \Illuminate\Http\JsonResponse
     {
         return response()->json(array_merge([
