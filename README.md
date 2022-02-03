@@ -10,7 +10,7 @@
 ## API URL's
 
 ### Команда:
-- http://localhost/api/client/team
+- GET http://localhost/api/client/team
 
 ### Статьи:
 Доступные параметры: **perPage**, **categoryId**, **tags**
@@ -18,23 +18,25 @@
 Дефолтные значения: **perPage = 15**
 
 #### Список:
-- http://localhost/api/client/articles/
-- http://localhost/api/client/articles/?categoryId[]=1&categoryId[]=2
-- http://localhost/api/client/articles/?categoryId[]=2
-- http://localhost/api/client/articles/?categoryId=2
-- http://localhost/api/client/articles/?tags=ddddd
-- http://localhost/api/client/articles/?tags[]=ddddd
-- http://localhost/api/client/articles/?perPage=1
+- GET http://localhost/api/client/articles/
+- GET http://localhost/api/client/articles/?categoryId[]=1&categoryId[]=2
+- GET http://localhost/api/client/articles/?categoryId[]=2
+- GET http://localhost/api/client/articles/?categoryId=2
+- GET http://localhost/api/client/articles/?tags=ddddd
+- GET http://localhost/api/client/articles/?tags[]=ddddd
+- GET http://localhost/api/client/articles/?perPage=1
 
 #### Детальная:
--http://localhost/api/client/article/1
+- GET http://localhost/api/client/article/1
 
 ### Дополнительные:
 
 ВНИМАНИЕ! Отсутствует ограничения по количеству!
 
-- http://localhost/api/client/articles/tags
-- http://localhost/api/client/articles/categories
+- GET http://localhost/api/client/articles/tags
+- GET http://localhost/api/client/articles/categories
+
+
 
 ## About Laravel
 

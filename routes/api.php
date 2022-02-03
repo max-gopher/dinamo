@@ -29,9 +29,11 @@ Route::prefix('client')->group(function () {
         Route::get('/categories', [\App\Http\Controllers\Api\ArticleController::class, 'categories']);
     });
 
-    Route::get('/games', [\App\Http\Controllers\Api\GameController::class, 'list']);
     Route::get('/game/{id}', [\App\Http\Controllers\Api\GameController::class, 'get'])
         ->where('id', '[0-9]+');
+    Route::prefix('games')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Api\GameController::class, 'list']);
+    });
 
     // api/client/article
     // api/client/article with params
