@@ -49,7 +49,7 @@ class Game extends Resource
             BelongsTo::make(__('Принимающая команда'), 'owner', Club::class),
             BelongsTo::make(__('Команда гостей'), 'guest', Club::class),
             Date::make(__('Дата'), 'date'),
-            Time::make(__('Время'), 'time'),
+            Time::make(__('Время'), 'time')->format('HH:mm'),
             BelongsTo::make(__('Лига'), 'league', League::class),
             Text::make(__('Тур'), 'tur'),
             Number::make(__('Счет для принимающей стороны'), 'owner_score')->default(0),
