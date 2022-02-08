@@ -19,8 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('client')->group(function () {
+    // Команда
     Route::get('/team', [\App\Http\Controllers\Api\TeamController::class, 'list']);
 
+    // Статьи
     Route::get('/article/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'get'])
         ->where('id', '[0-9]+');
     Route::prefix('articles')->group(function () {
@@ -29,13 +31,16 @@ Route::prefix('client')->group(function () {
         Route::get('/categories', [\App\Http\Controllers\Api\ArticleController::class, 'categories']);
     });
 
+    // Матчи
     Route::get('/game/{id}', [\App\Http\Controllers\Api\GameController::class, 'get'])
         ->where('id', '[0-9]+');
     Route::prefix('games')->group(function () {
         Route::get('/', [\App\Http\Controllers\Api\GameController::class, 'list']);
     });
 
-    // api/client/article
+    // Таблица
+    Route::get('/league');
+
     // api/client/article with params
     // api/client/table
     // api/client/tags
