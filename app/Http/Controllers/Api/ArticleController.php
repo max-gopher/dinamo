@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -33,12 +32,12 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function get($id): \Illuminate\Http\JsonResponse
+    public function get($slug): \Illuminate\Http\JsonResponse
     {
-        $article = Article::whereId($id)->with(['category', 'tags'])->first();
+        $article = Article::whereSlug($slug)->with(['category', 'tags'])->first();
 
         if (empty($article)) {
-            return $this->error(__('Статья не найдена'), ['id' => $id], 404);
+            return $this->error(__('Статья не найдена'), ['slug' => $slug], 404);
         }
 
         return $this->success([

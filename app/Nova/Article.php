@@ -96,6 +96,7 @@ class Article extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Image::make(__('Изображение'), 'image')->disk('articles'),
             Text::make(__('Название'), 'name')->rules(['required']),
+            Text::make(__('Slug'), 'slug'),
             Date::make(__('Дата'), 'date')->rules(['required']),
             BelongsTo::make(__('Рубрика'), 'category', Category::class),
             Tags::make(__('Теги')),

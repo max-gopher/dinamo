@@ -23,8 +23,7 @@ Route::prefix('client')->group(function () {
     Route::get('/team', [\App\Http\Controllers\Api\TeamController::class, 'list']);
 
     // Статьи
-    Route::get('/article/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'get'])
-        ->where('id', '[0-9]+');
+    Route::get('/article/{slug}', [\App\Http\Controllers\Api\ArticleController::class, 'get']);
     Route::prefix('articles')->group(function () {
         Route::get('/', [\App\Http\Controllers\Api\ArticleController::class, 'list']);
         Route::get('/tags', [\App\Http\Controllers\Api\ArticleController::class, 'tags']);
