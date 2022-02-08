@@ -29,13 +29,14 @@
 #### Детальная:
 - GET http://localhost/api/client/article/1
 
-### Дополнительные:
-
+#### Дополнительные:
 ВНИМАНИЕ! Отсутствует ограничения по количеству!
 
 - GET http://localhost/api/client/articles/tags
 - GET http://localhost/api/client/articles/categories
 
+### Таблица:
+- GET http://localhost/api/client/league
 
 
 ## About Laravel
