@@ -27,7 +27,7 @@
 - GET http://localhost/api/client/articles/?perPage=1
 
 #### Детальная:
-- GET http://localhost/api/client/article/1
+- GET http://localhost/api/client/article/{slug}
 
 #### Дополнительные:
 ВНИМАНИЕ! Отсутствует ограничения по количеству!
