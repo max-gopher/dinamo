@@ -10,6 +10,7 @@ class GameController extends Controller
 {
     public function list(Request $request)
     {
+        // TODO Разобратьсяс датой игр
         return $this->success([
             'items' => Game::whereYear('date', 2021)->get()
         ]);
