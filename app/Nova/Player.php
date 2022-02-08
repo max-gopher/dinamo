@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -51,6 +52,7 @@ class Player extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            Avatar::make(__('Логотип'), 'photo')->disk('players'),
             Text::make(__('Фамилия'), 'last_name'),
             Text::make(__('Имя'), 'first_name')->rules(['required']),
             Text::make(__('Отчество'), 'middle_name'),
