@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Michielfb\Time\Time;
@@ -46,14 +47,17 @@ class Game extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make(__('Принимающая команда'), 'owner', Club::class),
-            BelongsTo::make(__('Команда гостей'), 'guest', Club::class),
+            Select::make(__('Кто мы?'),  'who')
+                ->options(\App\Models\Game::getWhoOptions())
+                ->displayUsingLabels()
+                ->rules(['required']),
+            BelongsTo::make(__('Соперник'), 'opponent', Club::class),
             Date::make(__('Дата'), 'date'),
             Time::make(__('Время'), 'time')->format('HH:mm'),
             BelongsTo::make(__('Лига'), 'league', League::class),
             Text::make(__('Тур'), 'tur'),
-            Number::make(__('Счет для принимающей стороны'), 'owner_score')->default(0),
-            Number::make(__('Счет для гостей'), 'guest_score')->default(0)
+            Number::make(__('Счет наш'), 'our_score')->nullable(),
+            Number::make(__('Счет соперника'), 'opponent_score')->nullable()
         ];
     }
 
