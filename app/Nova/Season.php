@@ -3,28 +3,30 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Player extends Resource
+class Season extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Player::class;
+    public static $model = \App\Models\Season::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
-     * @var string
+     * @return string
      */
-    public static $title = 'first_name';
+    public function title(): string
+    {
+        return $this->league->name . ' ' . $this->year;
+    }
 
     /**
      * The columns that should be searched.
@@ -32,7 +34,7 @@ class Player extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'year'
     ];
 
     /**
@@ -42,7 +44,7 @@ class Player extends Resource
      */
     public static function label()
     {
-        return __('Игроки');
+        return __('Сезоны');
     }
 
     /**
@@ -52,7 +54,7 @@ class Player extends Resource
      */
     public static function singularLabel()
     {
-        return __('Игрок');
+        return __('Сезон');
     }
 
     /**
@@ -62,7 +64,7 @@ class Player extends Resource
      */
     public static function createButtonLabel()
     {
-        return __('Добавить Игрока');
+        return __('Добавить Сезон');
     }
 
     /**
@@ -72,7 +74,7 @@ class Player extends Resource
      */
     public static function updateButtonLabel()
     {
-        return __('Сохранить Игрока');
+        return __('Сохранить Сезон');
     }
 
     /**
@@ -80,7 +82,7 @@ class Player extends Resource
      *
      * @var string
      */
-    public static $group = 'Наша команда';
+    public static $group = 'Общие';
 
     /**
      * Get the fields displayed by the resource.
@@ -92,11 +94,8 @@ class Player extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Avatar::make(__('Логотип'), 'photo')->disk('players'),
-            Text::make(__('Фамилия'), 'last_name'),
-            Text::make(__('Имя'), 'first_name')->rules(['required']),
-            Text::make(__('Отчество'), 'middle_name'),
-            Number::make(__('Номер'), 'number')
+            BelongsTo::make(__('Лига'), 'league', League::class),
+            Number::make(__('Год'), 'year')
         ];
     }
 

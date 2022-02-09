@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class League extends Model
 {
@@ -12,8 +13,8 @@ class League extends Model
 
     protected $fillable = ['name'];
 
-    public function clubs(): BelongsToMany
+    public function seasons(): HasMany
     {
-        return $this->belongsToMany(Club::class, 'league_club');
+        return $this->hasMany(Season::class);
     }
 }

@@ -38,6 +38,53 @@ class Game extends Resource
     ];
 
     /**
+     * Get the displayable label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return __('Игры');
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Игра');
+    }
+
+    /**
+     * Get the text for the create resource button.
+     *
+     * @return string|null
+     */
+    public static function createButtonLabel()
+    {
+        return __('Добавить Игру');
+    }
+
+    /**
+     * Get the text for the update resource button.
+     *
+     * @return string|null
+     */
+    public static function updateButtonLabel()
+    {
+        return __('Сохранить Игру');
+    }
+
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Общие';
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,7 +101,7 @@ class Game extends Resource
             BelongsTo::make(__('Соперник'), 'opponent', Club::class),
             Date::make(__('Дата'), 'date'),
             Time::make(__('Время'), 'time')->format('HH:mm'),
-            BelongsTo::make(__('Лига'), 'league', League::class),
+            BelongsTo::make(__('Сезон'), 'season', Season::class),
             Text::make(__('Тур'), 'tur'),
             Number::make(__('Счет наш'), 'our_score')->nullable(),
             Number::make(__('Счет соперника'), 'opponent_score')->nullable()
