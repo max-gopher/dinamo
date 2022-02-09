@@ -23,6 +23,7 @@ class ChangeScoreFieldsInGamesTable extends Migration
             $table->string('who');
             $table->renameColumn('owner_score', 'our_score');
             $table->renameColumn('guest_score', 'opponent_score');
+            $table->renameColumn('league_id', 'season_id');
         });
     }
 
@@ -43,6 +44,7 @@ class ChangeScoreFieldsInGamesTable extends Migration
             $table->bigInteger('guest_id');
             $table->renameColumn('our_score', 'owner_score');
             $table->renameColumn('opponent_score', 'guest_score');
+            $table->renameColumn('season_id', 'league_id');
         });
     }
 }
