@@ -18,7 +18,7 @@ class Game extends Model
         'opponent_id',
         'date',
         'time',
-        'league_id',
+        'season_id',
         'tur',
         'owner_score',
         'guest_score',
@@ -32,11 +32,12 @@ class Game extends Model
         return $this->belongsTo(Club::class, 'opponent_id');
     }
 
-    public function league(): BelongsTo
+    public function season(): BelongsTo
     {
-        return $this->belongsTo(League::class);
+        return $this->belongsTo(Season::class);
     }
 
+    #[ArrayShape([self::WHO_OWNER => "string", self::WHO_GUEST => "string"])]
     public static function getWhoOptions(): array
     {
         return [

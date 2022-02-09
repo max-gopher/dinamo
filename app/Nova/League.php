@@ -23,7 +23,7 @@ class League extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -79,7 +79,7 @@ class League extends Resource
      *
      * @var string
      */
-    public static $group = 'Общие';
+    public static $group = 'Справочники';
 
     /**
      * Get the fields displayed by the resource.
@@ -91,8 +91,7 @@ class League extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Название'), 'name')->rules(['required']),
-            new Panel(__('Команды'), $this->clubsPanel())
+            Text::make(__('Название'), 'name')->rules(['required'])
         ];
     }
 
@@ -138,12 +137,5 @@ class League extends Resource
     public function actions(Request $request)
     {
         return [];
-    }
-
-    protected function clubsPanel(): array
-    {
-        return [
-            BelongsToMany::make(__('Команды'), 'clubs', Club::class)
-        ];
     }
 }
