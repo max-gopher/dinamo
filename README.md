@@ -47,6 +47,8 @@
 
 - GET http://localhost/api/client/games
 - GET http://localhost/api/client/games?seasonId=1
+- GET http://localhost/api/client/game/last
+- GET http://localhost/api/client/games/future
 
 ## About Laravel
 

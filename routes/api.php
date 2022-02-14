@@ -31,10 +31,10 @@ Route::prefix('client')->group(function () {
     });
 
     // Матчи
-    Route::get('/game/{id}', [\App\Http\Controllers\Api\GameController::class, 'get'])
-        ->where('id', '[0-9]+');
+    Route::get('/game/last', [\App\Http\Controllers\Api\GameController::class, 'last']);
     Route::prefix('games')->group(function () {
         Route::get('/', [\App\Http\Controllers\Api\GameController::class, 'list']);
+        Route::get('/future', [\App\Http\Controllers\Api\GameController::class, 'future']);
     });
 
     // Таблица
