@@ -44,10 +44,9 @@
 - GET http://localhost/api/client/settings
 
 ### Игры:
-Если в текущем году (сезоне) сыгранно менее дефолтного **perPage = 15**, то будут выбраны последние **perPage = 15** игр.
-Иначе будут выбраны последние **perPage = 15** игры года (сезона)
 
 - GET http://localhost/api/client/games
+- GET http://localhost/api/client/games?seasonId=1
 
 ## About Laravel
 

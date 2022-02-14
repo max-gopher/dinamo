@@ -22,4 +22,14 @@ class Season extends Model
     {
         return $this->hasMany(Game::class);
     }
+
+    public function games_past(): HasMany
+    {
+        return $this->games()->past();
+    }
+
+    public function getSelectedAttribute()
+    {
+        return request()->get('seasonId') == $this->id;
+    }
 }

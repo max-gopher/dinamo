@@ -5,21 +5,24 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+use App\Models\League;
+use App\Models\Season;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
     public function list(Request $request)
     {
-        $year = $request->get('year', now()->year);
-        $count_actual_games = Game::past()->whereYear('date', $year)->count();
+        $filters = $this->getFilters();
+        $season_id = $request->get('seasonId');
+        if (empty($season_id)) {
+            $season_id = optional($filters['seasons']->first())->id;
+        }
+
         $games = Game::past()
-            ->when($count_actual_games >= self::$perPage, function ($query) use ($year) {
-                $query->whereYear('date', $year);
-            })
+            ->where('season_id', '=', $season_id)
             ->orderByDesc('date')
             ->with('season.league', 'opponent')
-            ->limit(self::$perPage)
             ->get();
 
         $result = $games->groupBy(function ($item) {
@@ -27,12 +30,30 @@ class GameController extends Controller
         });
 
         return $this->success([
-            'items' => $result
+            'items' => $result,
+            'filters' => $this->getFilters(),
+            ''
         ]);
     }
 
     public function get($id)
     {
 
+    }
+
+    protected function getFilters(): array
+    {
+        $league_ids = League::select('id')->whereHas('seasons.games_past')->getQuery();
+        $seasons = Season::whereIn('league_id', $league_ids)
+            ->with('league')
+            ->orderByDesc('year')
+            ->get()
+            ->transform(function ($item) {
+                $item->is_selected = $item->selected;
+                return $item;
+            });
+        return [
+            'seasons' => $seasons
+        ];
     }
 }
