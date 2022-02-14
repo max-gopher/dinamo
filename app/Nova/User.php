@@ -78,7 +78,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $group = 'Администрирование';
+    public static $group = self::GROUP_ADMINISTRATION;
 
     /**
      * Get the fields displayed by the resource.

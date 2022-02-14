@@ -77,7 +77,7 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $group = 'Справочники';
+    public static $group = self::GROUP_REFERENCES;
 
     /**
      * Get the fields displayed by the resource.

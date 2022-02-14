@@ -82,7 +82,7 @@ class Season extends Resource
      *
      * @var string
      */
-    public static $group = 'Общие';
+    public static $group = self::GROUP_GENERAL;
 
     /**
      * Get the fields displayed by the resource.

@@ -10,9 +10,12 @@ class GameController extends Controller
 {
     public function list(Request $request)
     {
+        $year = $request->get('year', now()->year);
+        $games = Game::past()->whereYear('date', $year)->with('season.league', 'opponent')->get();
+
         // TODO Разобратьсяс датой игр
         return $this->success([
-            'items' => Game::whereYear('date', 2021)->get()
+            'items' => $games
         ]);
     }
 

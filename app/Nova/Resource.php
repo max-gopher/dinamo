@@ -7,6 +7,11 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource
 {
+    const GROUP_OUR_CLUB = 'Наша клуб';
+    const GROUP_ADMINISTRATION = 'Администрирование';
+    const GROUP_REFERENCES = 'Справочники';
+    const GROUP_GENERAL = 'Общие';
+
     /**
      * Build an "index" query for the given resource.
      *

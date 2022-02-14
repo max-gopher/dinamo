@@ -80,7 +80,7 @@ class Player extends Resource
      *
      * @var string
      */
-    public static $group = 'Наша команда';
+    public static $group = self::GROUP_OUR_CLUB;
 
     /**
      * Get the fields displayed by the resource.
