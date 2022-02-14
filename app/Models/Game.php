@@ -38,6 +38,12 @@ class Game extends Model
         return $this->belongsTo(Season::class);
     }
 
+    /**
+     * Будущие игры, которым не установлен счет
+     *
+     * @param Builder $query
+     * @return Builder
+     */
     public function scopeFuture(Builder $query): Builder
     {
         return $query->where(function ($q) {
@@ -47,6 +53,12 @@ class Game extends Model
         });
     }
 
+    /**
+     * Игры, которые прошли и им установлен счет.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
     public function scopePast(Builder $query): Builder
     {
         return $query->where(function ($q) {

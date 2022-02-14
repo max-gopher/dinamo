@@ -38,11 +38,16 @@
 ### Таблица:
 - GET http://localhost/api/client/league
 
-
 ### Настройки:
 Позволяет получать название клуба и логотип
 
 - GET http://localhost/api/client/settings
+
+### Игры:
+Если в текущем году (сезоне) сыгранно менее дефолтного **perPage = 15**, то будут выбраны последние **perPage = 15** игр.
+Иначе будут выбраны последние **perPage = 15** игры года (сезона)
+
+- GET http://localhost/api/client/games
 
 ## About Laravel
 
