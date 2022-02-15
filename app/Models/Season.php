@@ -28,6 +28,11 @@ class Season extends Model
         return $this->games()->past();
     }
 
+    public function tour(): HasMany
+    {
+        return $this->hasMany(Tour::class);
+    }
+
     public function getSelectedAttribute()
     {
         return request()->get('seasonId') == $this->id;

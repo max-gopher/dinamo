@@ -45,7 +45,5 @@ Route::prefix('client')->group(function () {
         return response()->json(['items' => \App\Models\Setting::first()]);
     });
 
-    // api/client/article with params
     // api/client/table
-    // api/client/tags
 });

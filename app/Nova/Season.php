@@ -5,9 +5,11 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 
 class Season extends Resource
 {
@@ -95,7 +97,9 @@ class Season extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make(__('Лига'), 'league', League::class),
-            Number::make(__('Год'), 'year')
+            Number::make(__('Год'), 'year'),
+
+            new Panel(__('Турнир'), $this->seasonPanel())
         ];
     }
 
@@ -141,5 +145,12 @@ class Season extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    protected function seasonPanel(): array
+    {
+        return [
+            HasMany::make(__('Турнир'), 'tour', Tour::class)
+        ];
     }
 }
