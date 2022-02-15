@@ -16,6 +16,7 @@ class Tour extends Model
         'games',
         'win',
         'fail',
+        'draw',
         'scored',
         'conceded',
         'score'

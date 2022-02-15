@@ -63,6 +63,7 @@ class Tour extends Resource
             Number::make(__('Матчи'), 'games'),
             Number::make(__('Победы'), 'win'),
             Number::make(__('Поражения'), 'fail'),
+            Number::make(__('Ничьи'), 'draw'),
             Number::make(__('Забито'), 'scored'),
             Number::make(__('Пропущено'), 'conceded'),
             Number::make(__('Очки'), 'score')

@@ -20,6 +20,7 @@ class CreateToursTable extends Migration
             $table->integer('games')->nullable();
             $table->integer('win')->nullable();
             $table->integer('fail')->nullable();
+            $table->integer('draw')->nullable();
             $table->integer('scored')->nullable();
             $table->integer('conceded')->nullable();
             $table->integer('score')->nullable();

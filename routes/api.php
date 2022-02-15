@@ -37,8 +37,9 @@ Route::prefix('client')->group(function () {
         Route::get('/future', [\App\Http\Controllers\Api\GameController::class, 'future']);
     });
 
-    // Таблица
-    Route::get('/league');
+    Route::prefix('season')->group(function () {
+        Route::get('/table', [\App\Http\Controllers\Api\SeasonController::class, 'table']);
+    });
 
     // Настройки
     Route::get('/settings', function () {
