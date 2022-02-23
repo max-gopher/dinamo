@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class TourResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class TourResource extends JsonResource
     public function toArray($request)
     {
         $result = [
-            'logo' => $this->club->logo,
+            'logo' => Storage::disk('clubs')->url($this->club->logo),
             'name' => $this->club->name,
             'results' => [
                 'games' => $this->games,
