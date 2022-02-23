@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -28,7 +29,12 @@ class ArticleController extends Controller
             ->paginate($request->get('perPage') ?? self::$perPage);
 
         return $this->success([
-            'items' => $articles
+            'items' => $articles->transform(function ($article) {
+                if (!empty($article->image)) {
+                    $article->image = Storage::disk('articles')->url($article->image);
+                }
+                return $article;
+            })
         ]);
     }
 
@@ -38,6 +44,10 @@ class ArticleController extends Controller
 
         if (empty($article)) {
             return $this->error(__('Статья не найдена'), ['slug' => $slug], 404);
+        }
+
+        if (!empty($article->image)) {
+            $article->image = Storage::disk('articles')->url($article->image);
         }
 
         return $this->success([

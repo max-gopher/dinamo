@@ -9,6 +9,7 @@ use App\Models\League;
 use App\Models\Season;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
@@ -24,7 +25,13 @@ class GameController extends Controller
             ->where('season_id', '=', $season_id)
             ->orderByDesc('date')
             ->with('season.league', 'opponent')
-            ->get();
+            ->get()
+            ->transform(function ($game) {
+                if (!empty($game->opponent->logo)) {
+                    $game->opponent->logo = Storage::disk('clubs')->url($game->opponent->logo);
+                }
+                return $game;
+            });
 
         $result = $games->groupBy(function ($item) {
             return Helper::monthWord($item->date->month) . ' ' . $item->date->year;
@@ -38,15 +45,33 @@ class GameController extends Controller
 
     public function last(): JsonResponse
     {
+        $game = Game::past()->with('season.league', 'opponent')->orderByDesc('date')->first();
+
+        if (!empty($game->opponent->logo)) {
+            $game->opponent->logo = Storage::disk('clubs')->url($game->opponent->logo);
+        }
+
         return $this->success([
-            'item' => Game::past()->with('season.league', 'opponent')->orderByDesc('date')->first()
+            'item' => $game
         ]);
     }
 
     public function future(): JsonResponse
     {
+
+        $games = Game::future()
+            ->orderByDesc('date')
+            ->limit(3)
+            ->get()
+            ->transform(function ($game) {
+                if (!empty($game->opponent->logo)) {
+                    $game->opponent->logo = Storage::disk('clubs')->url($game->opponent->logo);
+                }
+                return $game;
+            });
+
         return $this->success([
-            'items' => Game::future()->orderByDesc('date')->limit(3)->get()
+            'items' => $games
         ]);
     }
 

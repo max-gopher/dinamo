@@ -16,7 +16,7 @@ class TourResource extends JsonResource
     public function toArray($request)
     {
         $result = [
-            'logo' => Storage::disk('clubs')->url($this->club->logo),
+            'logo' => !empty($this->club->logo) ? Storage::disk('clubs')->url($this->club->logo) : null,
             'name' => $this->club->name,
             'results' => [
                 'games' => $this->games,

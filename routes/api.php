@@ -43,7 +43,9 @@ Route::prefix('client')->group(function () {
 
     // Настройки
     Route::get('/settings', function () {
-        return response()->json(['items' => \App\Models\Setting::first()]);
+        return response()->json([
+            'items' => \App\Http\Resources\SettingResource::make(\App\Models\Setting::first())
+        ]);
     });
 
     // api/client/table
